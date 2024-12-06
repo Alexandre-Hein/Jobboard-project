@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des annonces - JobConnect</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">JobConnect</h1>
+            <% if (user) { %>
+                <% if (user.role === 'entreprise') { %>
+                    <p>Bonjour, <%= user.company_name %> !</p>
+                <% } else if (user.role === 'admin') { %>
+                    <p>Bonjour, Admin <%= user.first_name %> <%= user.last_name %> !</p>
+                <% } else { %>
+                    <p>Bonjour, <%= user.first_name %> <%= user.last_name %> !</p>
+                <% } %>
+            <% } else { %>
+                <p>Bonjour, visiteur !</p>
+            <% } %>
+            
+            <nav class="nav-buttons">
+                <div class="dropdown">
+                    <button id="profile-btn" class="dropbtn">Profil</button>
+                    <div id="profile-dropdown" class="dropdown-content hidden">
+                        <a href="/connexion" class="nav-link">Connexion</a>
+                        <a href="/inscription" class="nav-link">Inscription</a>
+                        <a href="/profil" class="nav-link">Profil</a>
+                        <a href="/deconnexion" class="nav-link">Déconnexion</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h2>Liste des annonces</h2>
+        <div class="advertisement-list">
+            <% advertisements.forEach(function(advertisement) { %>
+                <div class="advertisement">
+                    <h3><%= advertisement.title %></h3>
+                    <p><strong>Description :</strong> <%= advertisement.short_description %></p>
+                    <p><strong>Entreprise :</strong> <%= advertisement.company_name %></p> <!-- Ajout du nom de l'entreprise -->
+                    <p><strong>Lieu :</strong> <%= advertisement.location %></p>
+                    <p><strong>Adresse :</strong> <%= advertisement.address %></p>
+                    <p><strong>Temps de travail :</strong> <%= advertisement.working_time %></p>
+                    <button class="button_info" data-id="<%= advertisement.id %>">Afficher plus d'infos</button>
+                    <div class="more-info" id="info-<%= advertisement.id %>"></div>
+                    
+                    <button class="button_add" data-id="<%= advertisement.id %>">Postuler</button>
+                    <div id="apply-form-<%= advertisement.id %>" class="apply-form" style="display: none;">
+                        <form action="/apply/<%= advertisement.id %>" method="POST">
+                            <input type="hidden" name="user_id" value="<%= user ? user.id : '' %>">
+                            <textarea name="message" placeholder="Votre message pour l'annonceur" required></textarea>
+                            <button type="submit">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+    
+    <script>
+        const user = `<%= JSON.stringify(user || {}) %>`; 
+    </script>
+    
+    <script src="/js/script.js"></script> 
+    
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entreprise - Gestion des annonces</title>
+    <link rel="stylesheet" href="/css/entreprise.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Panneau d'Administration - JobConnect</h1>
+            <a href="/home" class="nav-link">Accueil</a>
+            <a href="/apply/company/<%= user.id %>/applications" class="nav-link">Mes candidatures</a>
+            
+            <!-- Bouton Profil avec menu déroulant -->
+            <div class="dropdown">
+                <button id="profile-btn" class="dropbtn">Profil</button>
+                <div id="profile-dropdown" class="dropdown-content hidden">
+                    <a href="/profil">Profil</a> 
+                    <a href="/deconnexion">Déconnexion</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Gestion des annonces -->
+        <section class="management-section">
+            <h2>Gestion des Annonces</h2>
+            <button id="add-ad-btn" class="btn btn-primary">Ajouter une Annonce</button>
+
+            <!-- Formulaire d'ajout d'annonce, masqué au départ -->
+            <div id="add-ad-form" class="form-section hidden">
+                <h3>Ajouter une Nouvelle Annonce</h3>
+                <form id="ad-form">
+                    <div class="input-group">
+                        <label for="title">Titre :</label>
+                        <input type="text" id="title" placeholder="Titre" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="short_description">Description courte :</label>
+                        <textarea id="short_description" placeholder="Description courte" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="full_description">Description complète :</label>
+                        <textarea id="full_description" placeholder="Description complète" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="salary">Salaire :</label>
+                        <input type="number" id="salary" placeholder="Salaire" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Lieu :</label>
+                        <input type="text" id="location" placeholder="Lieu" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="address">Adresse :</label>
+                        <input type="text" id="address" placeholder="Adresse" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="working_time">Durée de travail :</label>
+                        <input type="text" id="working_time" placeholder="Ex: Temps plein, 3 mois, etc." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter l'Annonce</button>
+                </form>
+            </div>
+
+            <!-- Tableau des annonces -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description courte</th>
+                        <th>Salaire</th>
+                        <th>Lieu</th>
+                        <th>Adresse</th>
+                        <th>Durée de travail</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ads-container">
+                    <!-- Les annonces seront insérées ici -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        const user = <%- JSON.stringify(user) %>;
+    </script>
+    
+    <script src="/js/entreprise.js"></script>
+</body>
+</html>

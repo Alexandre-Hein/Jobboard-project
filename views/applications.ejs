@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Candidatures</title>
+    <link rel="stylesheet" href="/css/profil.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Profil Utilisateur</h1>
+            <a href="/home" class="nav-link">Accueil</a>
+            <a href="/profil" class="nav-link">Profil</a>
+            <a href="/deconnexion" class="nav-link">Déconnexion</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Liste des candidatures</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre de l'annonce</th>
+                    <th>Message</th>
+                    <th>Date de candidature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (applications.length > 0) { %>
+                    <% applications.forEach(application => { %>
+                        <tr>
+                            <td><%= application.title %></td>
+                            <td><%= application.message %></td>
+                            <td><%= application.applied_at %></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="3">Aucune candidature trouvée.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

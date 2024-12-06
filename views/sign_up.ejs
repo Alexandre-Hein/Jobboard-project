@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect - Inscription</title>
+    <link rel="stylesheet" href="/css/sign_up.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Inscription</h1>
+        <div class="sign_up-form">
+            <form action="/inscription" method="POST">
+
+                <!-- Partie utilisateur (affichée par défaut) -->
+                <div class="input-group" id="user-fields">
+                    <label for="first_name">Prénom :</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Entrez votre prénom">
+                </div>
+
+                <div class="input-group">
+                    <label for="last_name">Nom :</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Entrez votre nom">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" placeholder="Entrez votre email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="user_password">Mot de Passe :</label>
+                    <input type="password" id="user_password" name="user_password" placeholder="Entrez votre mot de passe" required>
+                </div>
+
+                <!-- Sélection du rôle -->
+                <div class="input-group">
+                    <label for="role">Rôle :</label>
+                    <select id="role" name="role" required>
+                        <option value="" disabled selected>Choisissez un rôle</option>
+                        <option value="entreprise">Entreprise</option>
+                        <option value="utilisateur">Utilisateur</option>
+                    </select>
+                </div>
+
+                <!-- Partie entreprise (affichée uniquement si le rôle "entreprise" est sélectionné) -->
+                <div class="input-group" id="company-fields" style="display: none;">
+                    <label for="company_name">Nom de l'entreprise :</label>
+                    <input type="text" id="company_name" name="company_name" placeholder="Entrez le nom de votre entreprise">
+                </div>
+
+                <div class="input-group button-sign_up">
+                    <button type="submit">S'inscrire</button>
+                </div>
+            </form>
+        </div>
+
+        <% if (typeof errorMessage !== 'undefined') { %>
+            <div class="error-message">
+                <p><%= errorMessage %></p>
+            </div>
+        <% } %>
+    </div>
+
+    <!-- Script JS pour afficher/masquer les champs en fonction du rôle -->
+    <script>
+        document.getElementById('role').addEventListener('change', function() {
+            const userFields = document.getElementById('user-fields');
+            const companyFields = document.getElementById('company-fields');
+
+            if (this.value === 'entreprise') {
+                companyFields.style.display = 'block';
+                userFields.style.display = 'none';
+            } else {
+                companyFields.style.display = 'none';
+                userFields.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

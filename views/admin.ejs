@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panneau d'Administration - JobConnect</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Panneau d'Administration - JobConnect</h1>
+            <a href="/home" class="nav-link">Accueil</a>
+            <a href="/profil" class="nav-link">Profil</a>
+
+            <!-- Bouton Profil avec menu déroulant -->
+            <div class="dropdown">
+                <button id="profile-btn" class="dropbtn">Profil</button>
+                <div id="profile-dropdown" class="dropdown-content hidden">
+                    <a href="profil">Profil</a>
+                    <a href="/admin">Panneau d'Administration</a>
+                    <a href="/deconnexion">Déconnexion</a>
+                </div>
+            </div>
+        </nav>
+    </header>     
+    
+    <main>
+        <!-- Gestion des annonces -->
+        <section class="management-section">
+            <h2>Gestion des Annonces</h2>
+            <button id="add-ad-btn" class="btn btn-primary">Ajouter une Annonce</button>
+
+            <!-- Formulaire d'ajout d'annonce, masqué au départ -->
+            <div id="add-ad-form" class="form-section hidden">
+                <h3>Ajouter une Nouvelle Annonce</h3>
+                <form id="ad-form">
+                    <div class="input-group">
+                        <label for="title">Titre :</label>
+                        <input type="text" id="title" placeholder="Titre" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="short_description">Description :</label>
+                        <textarea id="short_description" placeholder="short_description" required></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="salary">Salaire :</label>
+                        <input type="number" id="salary" placeholder="Salaire" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="location">Lieu :</label>
+                        <input type="text" id="location" placeholder="Lieu" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter l'Annonce</button>
+                </form>
+            </div>
+
+            <!-- Tableau des annonces -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Salaire</th>
+                        <th>Lieu</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ads-container">
+                    <!-- Les annonces seront insérées ici -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Gestion des utilisateurs -->
+        <section class="management-section">
+            <h2>Gestion des Utilisateurs</h2>
+
+            <!-- Bouton pour ajouter un utilisateur -->
+            <button id="add-user-btn" class="btn btn-primary">Ajouter un Utilisateur</button>
+
+            <!-- Formulaire d'ajout d'utilisateur, masqué au départ -->
+            <div id="add-user-form" class="form-section hidden">
+                <h3>Ajouter un Nouvel Utilisateur</h3>
+                <form id="user-form">
+                    <div class="input-group">
+                        <label for="first_name">Prénom :</label>
+                        <input type="text" id="first_name" placeholder="Prénom" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="last_name">Nom :</label>
+                        <input type="text" id="last_name" placeholder="Nom" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="user_password">Mot de Passe :</label>
+                        <input type="password" id="user_password" placeholder="Mot de passe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="role">Rôle :</label>
+                        <select id="role" required>
+                            <option value="admin">Admin</option>
+                            <option value="entreprise">Entreprise</option>
+                            <option value="utilisateur">Utilisateur</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ajouter l'Utilisateur</button>
+                </form>
+            </div>
+
+            <!-- Tableau des utilisateurs -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="users-container">
+                    <!-- Les utilisateurs seront insérés ici -->
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

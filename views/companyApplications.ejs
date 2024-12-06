@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des candidatures reçues - JobConnect</title>
+    <link rel="stylesheet" href="/css/profil.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Profil Entreprise</h1>
+            <a href="/home" class="nav-link">Accueil</a>
+            <a href="/entreprise" class="nav-link">Entreprise</a>
+
+            <a href="/deconnexion" class="nav-link">Déconnexion</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Liste des candidatures reçues</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Message</th>
+                    <th>Date de candidature</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (applications.length > 0) { %>
+                    <% applications.forEach(application => { %>
+                        <tr>
+                            <td><%= application.first_name %></td>
+                            <td><%= application.last_name %></td>
+                            <td><%= application.email %></td>
+                            <td><%= application.phone %></td>
+                            <td><%= application.message %></td>
+                            <td><%= application.applied_at %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="6">Aucune candidature reçue.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

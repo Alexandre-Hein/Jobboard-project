@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/profil.css">
+    <title>Profil Entreprise</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>Profil Entreprise</h1>
+            <a href="/home" class="nav-link">Accueil</a>
+            <a href="/entreprise" class="nav-link">Entreprise</a>
+            <a href="/apply/company/<%= user.id %>/applications" class="nav-link">Mes candidatures</a>
+            <a href="/deconnexion" class="nav-link">Déconnexion</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Informations de l'entreprise</h2>
+        <form action="/profil/update" method="POST">
+            <label for="company_name">Nom de l'entreprise :</label>
+            <input type="text" id="company_name" name="company_name" value="<%= user.company_name %>" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" value="<%= user.email %>" required>
+
+            <label for="phone">Téléphone :</label>
+            <input type="text" id="phone" name="phone" value="<%= user.phone %>">
+
+            <label for="user_password">Mot de passe :</label>
+            <input type="password" id="user_password" name="user_password" placeholder="Laissez vide pour ne pas changer">
+
+            <button type="submit">Mettre à jour</button>
+        </form>
+        
+        <section>
+            <h2>Supprimer le compte</h2>
+            <form action="/profil/delete" method="GET">
+                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?');">Supprimer le compte</button>
+            </form>
+        </section>        
+    </main>
+</body>
+</html>

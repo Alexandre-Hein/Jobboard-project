@@ -1,0 +1,161 @@
+/* Styles de base pour la page du profil */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #343a40;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+h1, h2 {
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #f1f1f1;
+}
+
+form input[type="password"] {
+    margin-bottom: 15px;
+}
+
+form button {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #495057;
+}
+
+.profile-section {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.profile-section p strong {
+    color: #343a40;
+}
+
+.profile-section .info-block {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.profile-section .info-block p {
+    width: 45%;
+}
+
+.profile-section .info-block label {
+    font-weight: bold;
+    color: #343a40;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+.table td {
+    background-color: #fff;
+}
+
+section {
+    margin-top: 40px;
+}
+
+section h2 {
+    color: #dc3545;
+}
+
+section button {
+    background-color: #dc3545;
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+section button:hover {
+    background-color: #c82333;
+}
